@@ -1,73 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
-    android:paddingLeft="15dp"
-    android:paddingTop="5dp"
-    android:background="@drawable/meeting_item_bg"
-    android:paddingRight="10dp"
-    android:paddingBottom="5dp"
-    android:layout_marginTop="20dp"
-    android:descendantFocusability="blocksDescendants" >
-    
-    <LinearLayout
-        android:layout_width="wrap_content"
+    android:background="@drawable/mainbgcolor"
+    android:orientation="horizontal">
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/actionPanel"
-        android:orientation="vertical">
-        
-        <TextView
-            android:id="@+id/txtTime"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:background="@drawable/meeting_item_bg"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:descendantFocusability="blocksDescendants" >
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/light_text"
             android:layout_height="wrap_content"
-            android:text="Today 10am" />
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/actionPanel"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtHostName"
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/light_text"
+                android:layout_height="wrap_content"
+                android:text="Today 10am" />
+
+            <TextView
+                android:id="@+id/txtHostName"
+                android:layout_width="wrap_content"
+                android:textColor="@color/light_text"
+                android:layout_height="wrap_content"
+                android:text="Host:" />
+
+            <TextView
+                android:id="@+id/txtTopic"
+                android:layout_width="wrap_content"
+                android:textColor="@color/light_text"
+                android:fontFamily="sans-serif"
+                android:layout_height="wrap_content"
+                android:text="Topic: My Meeting" />
+
+            <TextView
+                android:id="@+id/txtMeetingNo"
+                android:layout_width="wrap_content"
+                android:textColor="@color/light_text"
+                android:fontFamily="sans-serif"
+                android:layout_height="wrap_content"
+                android:text="Meeting ID: 111-111-111" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:textColor="@color/light_text"
             android:layout_height="wrap_content"
-            android:text="Host:" />
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:id="@+id/actionPanel">
 
-        <TextView
-            android:id="@+id/txtTopic"
-            android:layout_width="wrap_content"
-            android:textColor="@color/light_text"
-            android:fontFamily="sans-serif"
-            android:layout_height="wrap_content"
-            android:text="Topic: My Meeting" />
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="40dp"
+                android:background="#00000000"
+                android:src="@drawable/ic_baseline_remove_24"
+                android:layout_height="20dp"
+                android:duplicateParentState="false" />
 
-        <TextView
-            android:id="@+id/txtMeetingNo"
-            android:layout_width="wrap_content"
-            android:textColor="@color/light_text"
-            android:fontFamily="sans-serif"
-            android:layout_height="wrap_content"
-            android:text="Meeting ID: 111-111-111" />
-        
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:orientation="vertical"
-        android:id="@+id/actionPanel">
+    </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/btnDelete"
-            android:layout_width="40dp"
-            android:background="#00000000"
-            android:src="@drawable/ic_baseline_remove_24"
-            android:layout_height="20dp"
-
-            android:duplicateParentState="false" />
-
-    </LinearLayout>
-    
-</RelativeLayout>
-
+</LinearLayout>
