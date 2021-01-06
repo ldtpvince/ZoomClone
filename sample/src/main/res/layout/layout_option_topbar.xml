@@ -16,7 +16,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_shrink" />
+            android:src="@drawable/ic_baseline_filter_center_focus_24"
+            android:scaleY="1.1"
+            android:scaleX="1.1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -33,13 +35,14 @@
             android:layout_height="wrap_content"
             android:duplicateParentState="true"
             android:focusable="false"
-            android:src="@drawable/icon_switch_camera" />
+            android:src="@drawable/ic_baseline_flip_camera_ios_24"
+            android:scaleY="1.2"
+            android:scaleX="1.2"/>
     </LinearLayout>
 
 
     <Button
         android:id="@+id/btnLeaveZoomMeeting"
-        style="@style/ZMButton.TitleBar.Warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -47,6 +50,8 @@
         android:ellipsize="middle"
         android:singleLine="true"
         android:layout_marginRight="6dp"
+        android:background="@color/lightgreen"
+        android:textColor="@color/white"
         android:text="Leave" />
 
 
