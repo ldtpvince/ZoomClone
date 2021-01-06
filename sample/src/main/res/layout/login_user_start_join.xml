@@ -54,7 +54,6 @@
                 android:imeOptions="actionNext|flagNoExtractUi"
                 android:focusable="true"
                 android:textSize="18sp"
-
                 android:drawablePadding="20dp"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/light_text"
