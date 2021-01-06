@@ -360,16 +360,14 @@ public class InitAuthSDKActivity extends Activity implements InitAuthSDKCallback
     }
 
     private void showMeetingUi() {
+        ZoomSDK.getInstance().getMeetingSettingsHelper().setCustomizedMeetingUIEnabled(true);
         if (ZoomSDK.getInstance().getMeetingSettingsHelper().isCustomizedMeetingUIEnabled()) {
             SharedPreferences sharedPreferences = getSharedPreferences("UI_Setting", Context.MODE_PRIVATE);
             boolean enable = sharedPreferences.getBoolean("enable_rawdata", false);
             Intent intent = null;
-            if (!enable) {
-                intent = new Intent(this, MyMeetingActivity.class);
-                intent.putExtra("from",MyMeetingActivity.JOIN_FROM_UNLOGIN);
-            } else {
-                intent = new Intent(this, RawDataMeetingActivity.class);
-            }
+            Log.d(TAG, "showMeetingUi is running");
+            intent = new Intent(this, RawDataMeetingActivity.class);
+
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             this.startActivity(intent);
         }

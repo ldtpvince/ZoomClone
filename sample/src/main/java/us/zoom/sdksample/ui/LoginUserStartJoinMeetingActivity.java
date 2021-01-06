@@ -184,6 +184,7 @@ public class LoginUserStartJoinMeetingActivity extends Activity implements AuthC
             return;
         }
 
+        zoomSDK.getMeetingSettingsHelper().setCustomizedMeetingUIEnabled(true);
         final MeetingService meetingService = zoomSDK.getMeetingService();
 
         if (meetingService.getMeetingStatus() != MeetingStatus.MEETING_STATUS_IDLE) {

@@ -1,6 +1,8 @@
 package us.zoom.sdksample.inmeetingfunction.zoommeetingui;
 
 
+import android.util.Log;
+
 import us.zoom.sdk.InstantMeetingOptions;
 import us.zoom.sdk.JoinMeetingOptions;
 import us.zoom.sdk.MeetingOptions;
@@ -11,6 +13,7 @@ import us.zoom.sdksample.inmeetingfunction.customizedmeetingui.rawdata.VirtualVi
 public class ZoomMeetingUISettingHelper {
 
     private static JoinMeetingOptions meetingOptions = new JoinMeetingOptions();
+    private final static String TAG = "ZoomMeetingUISettingHelper";
 
     public static boolean useExternalVideoSource=false;
 
@@ -32,6 +35,7 @@ public class ZoomMeetingUISettingHelper {
     }
 
     public static StartMeetingOptions getStartMeetingOptions() {
+        Log.d(TAG, "Currently using zoom ui");
         StartMeetingOptions opts = new StartMeetingOptions();
         fillMeetingOption(opts);
         return opts;
