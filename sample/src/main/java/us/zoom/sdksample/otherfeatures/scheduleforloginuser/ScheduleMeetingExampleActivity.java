@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -96,6 +97,8 @@ public class ScheduleMeetingExampleActivity extends Activity implements PreMeeti
     private View mOptionLanguageInterpretation;
     private CheckBox mChkLanguageInterpretation;
 
+    private ImageButton mbtnBack;
+
 
     private View mOptionEnableWaitingRoom;
     private CheckBox mChkWaitingRoom;
@@ -113,6 +116,9 @@ public class ScheduleMeetingExampleActivity extends Activity implements PreMeeti
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.schedule_meeting);
+
+        mbtnBack = (ImageButton)findViewById(R.id.btnBack);
+        mbtnBack.setOnClickListener(this);
 
         mBtnSchedule = (Button) findViewById(R.id.btnSchedule);
         mBtnSchedule.setOnClickListener(this);
@@ -456,6 +462,9 @@ public class ScheduleMeetingExampleActivity extends Activity implements PreMeeti
     public void onClick(View arg0) {
         if (arg0.getId() == R.id.btnSchedule) {
             onClickSchedule();
+        }
+        else if(arg0.getId() == R.id.btnBack){
+            onBackPressed();
         }
     }
 

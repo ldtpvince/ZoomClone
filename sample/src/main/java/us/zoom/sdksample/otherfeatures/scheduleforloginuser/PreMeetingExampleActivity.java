@@ -35,14 +35,15 @@ public class PreMeetingExampleActivity extends Activity implements OnClickListen
 	
 	private ListView mListView;
 	private Button mBtnSchedule;
-	
+	private ImageButton mBtnBack;
 	private MeetingsListAdapter mAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pre_meeting_activity);
-		
+		mBtnBack = (ImageButton)findViewById(R.id.btnBack);
+		mBtnBack.setOnClickListener(this);
 		mListView = (ListView)findViewById(R.id.meetingsListView);
 		mBtnSchedule = (Button)findViewById(R.id.btnSchedule);
 		mBtnSchedule.setOnClickListener(this);
@@ -230,6 +231,9 @@ public class PreMeetingExampleActivity extends Activity implements OnClickListen
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.btnSchedule) {
 			onClickSchedule();
+		}
+		if(arg0.getId() == R.id.btnBack){
+			onBackPressed();
 		}
 	}
 
