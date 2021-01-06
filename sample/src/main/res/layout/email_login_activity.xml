@@ -3,8 +3,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+	android:background="@drawable/mainbgcolor"
     android:orientation="vertical" >
-    
+	
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="70dp"
+		android:text="Z"
+		android:fontFamily="sans-serif"
+		android:textStyle="bold"
+		android:textColor="#3ed99b"
+		android:textSize="130dp"
+		android:textFontWeight="700"
+		android:gravity="center"></TextView>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="25dp"
+		android:text="Welcome!"
+		android:fontFamily="sans-serif"
+		android:textStyle="bold"
+		android:textSize="30dp"
+		android:textColor="#FFFFFF"/>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="25dp"
+		android:text="Sign in to continue"
+		android:fontFamily="sans-serif"
+		android:textStyle="bold"
+		android:textSize="15dp"
+		android:textColor="#96a7af"/>
+
+
 
     <EditText
         android:id="@+id/userName"
