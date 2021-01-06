@@ -44,7 +44,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_light_bg"
-            android:padding="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:orientation="vertical">
             <EditText
                 android:id="@+id/edtMeetingNo"
@@ -76,7 +79,7 @@
                 android:background="#00000000"
                 android:textSize="18sp"
 
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:textColor="@color/light_text"
                 android:imeOptions="actionNext|flagNoExtractUi"
                 android:focusable="true">
@@ -87,7 +90,7 @@
                 android:id="@+id/edtMeetingPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:hint="Meeting Password"
                 android:inputType="textPassword"
                 android:background="#00000000"
@@ -112,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="Join this Meeting"
                 android:background="@drawable/light_button_bg"
                 android:textColor="@color/white"
@@ -136,7 +139,19 @@
             android:minHeight="40dp"
             android:paddingRight="40dp"
             android:onClick="onClickBtnLoginUserStartInstant" />
-
+        <Button
+            android:id="@+id/btnPreMeeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Schedule"
+            android:background="@drawable/dark_button_bg"
+            android:textColor="@color/white"
+            android:drawableRight="@drawable/ic_baseline_arrow_right_alt_24"
+            android:minHeight="40dp"
+            android:paddingRight="40dp"
+            android:onClick="onClickBtnPreMeeting" />
 
         <Button
             android:id="@+id/btnLogout"
@@ -153,53 +168,45 @@
             android:onClick="onClickBtnLogout" />
 
 
-               <Button
-                   android:id="@+id/btnStartMeeting"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="1"
-                   android:layout_marginRight="2dp"
-                   android:text="Start this Meeting"
-                   android:visibility="gone"
-                   android:onClick="onClickBtnStartMeeting" />
-
-
-        <Button
-            android:id="@+id/btnShare"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Direct Share"
-            android:visibility="gone"
-            android:onClick="onClickDirectShare" />
 
 
 
-        <Button
-            android:id="@+id/btn_return"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal"
-            android:minWidth="150dp"
-            android:onClick="onClickReturnMeeting"
-            android:visibility="gone"
-            android:text="Return Meeting" />
-
-
-        <Button
-            android:id="@+id/btnPreMeeting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal"
-            android:visibility="gone"
-            android:text="Pre-Meeting Example"
-            android:onClick="onClickBtnPreMeeting" />
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnStartMeeting"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginRight="2dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        android:text="Start this Meeting"
+        android:visibility="gone"
+        android:onClick="onClickBtnStartMeeting" />
+
+
+    <Button
+        android:id="@+id/btnShare"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Direct Share"
+        app:layout_constraintBottom_toTopOf="parent"
+        android:visibility="gone"
+        android:onClick="onClickDirectShare" />
+
+
+
+    <Button
+        android:id="@+id/btn_return"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:onClick="onClickReturnMeeting"
+        app:layout_constraintBottom_toTopOf="parent"
+        android:visibility="gone"
+        android:text="Return Meeting" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
