@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="@string/settings_switch_domain"
-            android:theme="@style/SwitchTheme"
+            android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:thumb="@drawable/switch_custom_thumb_selector"
             android:track="@drawable/switch_custom_track_selector"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="@string/settings_custom_ui"
-            android:theme="@style/SwitchTheme"
+            android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:thumb="@drawable/switch_custom_thumb_selector"
             android:track="@drawable/switch_custom_track_selector" />
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="@string/settings_video_source"
-            android:theme="@style/SwitchTheme"
+            android:textColor="#FFFFFF"
 
             android:textSize="16sp"
             android:thumb="@drawable/switch_custom_thumb_selector"
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Disconnect audio"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -90,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:hint="webinar token"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
 
             <Switch
@@ -98,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Disable zoom meeting ui driving mode"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -109,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Hidden invite button on participant view"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -120,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Disable to show meeting end dialog when meeting is end"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -131,7 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Disable show error message"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -143,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Hidden title bar on zoom meeting ui"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -155,7 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Hidden bottom bar on zoom meeting ui"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -166,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Hidden dial in via_phone"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -177,7 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Hidden dial out via_phone"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -188,7 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Hidden disconnect audio"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -199,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Hidden share"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -210,7 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Video off"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -220,13 +221,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Meeting view options"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/view_option_contain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -323,11 +326,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Invite  options"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <CheckBox
                     android:id="@+id/invite_enable_all"
@@ -345,7 +350,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <CheckBox
                     android:id="@+id/invite_via_sms"
@@ -362,7 +368,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -377,7 +384,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
                 android:hint="Participant id"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <EditText
                 android:id="@+id/edit_custom_meeting_id"
@@ -385,14 +393,15 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
                 android:hint="Custom meeting id"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <Switch
                 android:id="@+id/no_unmute_confirm_dialog"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="NO unmute confirm dialog"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -403,7 +412,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="No webinar register dialog"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -428,7 +437,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/zm_lbl_auto_connect_audio_92027"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -440,7 +449,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/zm_lbl_auto_mute_mic_on_join_meeting"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -452,7 +461,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/zm_lbl_not_open_camera_on_join_meeting"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -466,7 +475,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Hide no video users"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -479,7 +488,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Auto switch video layout "
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -493,7 +502,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Enable videos gallery view"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -506,7 +515,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Always show meeting toolbar"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -520,7 +529,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Show larger share view"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -533,7 +542,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="No video tile on share screen"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -546,7 +555,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="No leave meeting button for host"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -559,7 +568,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="No user join or leave tip"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -572,7 +581,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Enable force auto start myVideo when join"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
 
                 android:textSize="16sp"
@@ -585,7 +594,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Enable force auto stop myVideo when join"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -597,7 +606,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Disable show audio select dialog"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -608,7 +617,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/settings_hide_screen_share_toolbar_annotation"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -619,7 +628,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/settings_hide_screen_share_toolbar_stopshare"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
@@ -660,7 +669,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Render with raw data"
-                android:theme="@style/SwitchTheme"
+                android:textColor="#FFFFFF"
 
                 android:textSize="16sp"
                 android:thumb="@drawable/switch_custom_thumb_selector"
