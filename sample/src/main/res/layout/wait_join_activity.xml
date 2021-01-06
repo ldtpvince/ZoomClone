@@ -9,8 +9,8 @@
         android:id="@+id/txtTopic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor=""
-        android:text="Topic: "/>
+        android:text="Topic: "
+        android:background="@drawable/curve_rectangle"/>
     
      <TextView
         android:id="@+id/txtMeetingId"
