@@ -5,24 +5,54 @@
     android:layout_height="match_parent"
     android:minWidth="600dp"
     android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:background="@drawable/mainbgcolor"
+    >
 
-    <Button
-        android:id="@+id/btnSchedule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:text="Schedule this meeting" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="15dp"
+       android:gravity="center_horizontal"
+       android:layout_marginBottom="15dp"
+       android:orientation="horizontal">
+       <ImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="fill_parent"
+           android:src="@drawable/ic_baseline_arrow_back_ios_24"
+           android:background="#00000000"
+
+           android:id="@+id/btnBack"
+           android:layout_marginLeft="25dp"
+           android:layout_gravity="center_horizontal"
+           />
+       <Button
+           android:id="@+id/btnSchedule"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+           android:background="@drawable/light_button_bg"
+           android:textColor="@color/white"
+
+           android:layout_marginLeft="25dp"
+           android:layout_marginRight="25dp"
+
+           android:drawableRight="@drawable/ic_baseline_arrow_right_alt_24"
+           android:minHeight="40dp"
+           android:paddingRight="30dp"
+           android:paddingLeft="30dp"
+           android:text="Schedule this meeting" />
+   </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
+
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp"
             android:orientation="vertical">
 
             <!-- Meeting topic -->
@@ -39,6 +69,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Topic:"
+                    android:paddingLeft="5dp"
+                    android:textColorHint="@color/light_text"
+                    android:textColor="@color/light_text"
+                    android:fontFamily="sans-serif"
+                    android:background="@color/lightmaincolor"
+                    android:minHeight="40dp"
                     android:maxLength="128"
                     android:singleLine="true">
 
@@ -58,6 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Time Option"
+                    android:textColor="@color/light_text"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -70,12 +107,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_gravity="left|center_vertical"
                         android:text="Date" />
 
                     <TextView
                         android:id="@+id/txtDate"
                         android:layout_width="match_parent"
+                        android:textColor="@color/light_text"
                         android:layout_height="match_parent"
                         android:gravity="right|center_vertical"
                         android:text="Thu 2012-09-27" />
@@ -86,6 +125,7 @@
                 <LinearLayout
                     android:id="@+id/optionTimeFrom"
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
@@ -94,6 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
+                        android:textColor="@color/light_text"
                         android:text="From time" />
 
                     <TextView
@@ -101,6 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="right|center_vertical"
+                        android:textColor="@color/light_text"
                         android:text="09:00 am" />
 
                 </LinearLayout>
@@ -118,12 +160,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
+                        android:textColor="@color/light_text"
                         android:text="End time" />
 
                     <TextView
                         android:id="@+id/txtTimeTo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:textColor="@color/light_text"
                         android:gravity="right|center_vertical"
                         android:text="10:00 am" />
                 </LinearLayout>
@@ -139,6 +183,7 @@
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
                         android:text="Time zone" />
@@ -147,6 +192,7 @@
                         android:id="@+id/txtTimeZone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:textColor="@color/light_text"
                         android:gravity="right|center_vertical"
                         android:text="GMT+08:00 China Stardard Time" />
                 </LinearLayout>
@@ -158,11 +204,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
+
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/light_text"
                     android:text="Video Option"
                     android:textStyle="bold" />
 
@@ -179,11 +227,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
+                        android:textColor="@color/light_text"
                         android:text="Host Video off" />
 
                     <CheckBox
                         android:id="@+id/chkHostVideo"
                         android:layout_width="wrap_content"
+                        android:buttonTint="@color/light_text"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -200,11 +252,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
+                        android:textColor="@color/light_text"
                         android:text="Attendee video off" />
 
                     <CheckBox
                         android:id="@+id/chkAttendeeVideo"
                         android:layout_width="wrap_content"
+                        android:buttonTint="@color/light_text"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
@@ -221,6 +277,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Audio Option"
+                    android:textColor="@color/light_text"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -235,6 +292,7 @@
                         android:id="@+id/txtVoip"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="Voip" />
@@ -242,6 +300,9 @@
                     <CheckBox
                         android:id="@+id/chkVoip"
                         android:layout_width="wrap_content"
+                        android:buttonTint="@color/light_text"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -256,6 +317,7 @@
                     <TextView
                         android:id="@+id/txtTelephone"
                         android:layout_width="0dp"
+                        android:textColor="@color/light_text"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
@@ -264,6 +326,9 @@
                     <CheckBox
                         android:id="@+id/chkTelephony"
                         android:layout_width="wrap_content"
+                        android:buttonTint="@color/light_text"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -279,6 +344,7 @@
                         android:id="@+id/txt3rdPartyAudio"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="Third party audio" />
@@ -286,6 +352,9 @@
                     <CheckBox
                         android:id="@+id/chk3rdPartyAudio"
                         android:layout_width="wrap_content"
+                        android:buttonTint="@color/light_text"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -300,11 +369,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_country"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
                         android:text="@string/zm_lbl_select_dial_in_countries_127873" />
 
                     <TextView
@@ -312,22 +383,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:background="@color/zm_text_gray"
+                        android:background="@color/lightmaincolor"
                         android:gravity="center_vertical"
-                        android:minHeight="45dp"
-                        android:textSize="20sp"></TextView>
+                        android:minHeight="35dp"
+                        android:paddingLeft="5dp"
+                        android:textSize="17sp"></TextView>
 
                     <TextView
                         android:id="@+id/edit_country"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="35dp"
                         android:layout_marginTop="10dp"
-                        android:background="@color/zm_text_gray"
+                        android:background="@color/lightmaincolor"
                         android:gravity="center_vertical"
+                        android:paddingLeft="5dp"
                         android:onClick="onClickEditCountry"
                         android:text="@string/zm_btn_edit_country_127873"
-                        android:textColor="@color/zm_black"
-                        android:textSize="20sp" />
+
+                        android:textColor="@color/light_text"
+                        android:textSize="17sp" />
                 </LinearLayout>
 
 
@@ -343,6 +417,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:textColor="@color/light_text"
                     android:layout_height="wrap_content"
                     android:text="Meeting Option"
                     android:textStyle="bold" />
@@ -358,6 +433,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="Participent can join before host" />
@@ -365,6 +441,9 @@
                     <CheckBox
                         android:id="@+id/chkEnableJBH"
                         android:layout_width="wrap_content"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
+                        android:buttonTint="@color/light_text"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -381,12 +460,17 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/light_text"
                         android:gravity="left|center_vertical"
                         android:text="Schedule use pmi" />
 
                     <CheckBox
                         android:id="@+id/chkUsePMI"
                         android:layout_width="wrap_content"
+                        android:buttonTint="@color/light_text"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -402,6 +486,7 @@
                         android:id="@+id/txtHostInChina"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="Host meeting in china" />
@@ -409,6 +494,9 @@
                     <CheckBox
                         android:id="@+id/chkHostInChina"
                         android:layout_width="wrap_content"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
+                        android:buttonTint="@color/light_text"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -426,19 +514,26 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
+                        android:textColor="@color/light_text"
                         android:text="Only Sign in user can join" />
 
                     <CheckBox
                         android:id="@+id/chkOnlySignCanJoin"
                         android:layout_width="wrap_content"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
+                        android:buttonTint="@color/light_text"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <EditText
                     android:id="@+id/edtSpecifiedDomains"
                     android:layout_width="match_parent"
+                    android:textColor="@color/light_text"
                     android:layout_height="wrap_content"
+                    android:background="@color/lightmaincolor"
                     android:hint="Specified domains"
+                    android:textSize="17sp"
                     android:visibility="gone" />
 
                 <LinearLayout
@@ -452,7 +547,13 @@
                         android:id="@+id/edtPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
+                        android:textColorHint="@color/light_text"
+                        android:background="@color/lightmaincolor"
                         android:hint="Meeting password"
+                        android:paddingLeft="5dp"
+                        android:textSize="17sp"
+                        android:minHeight="35dp"
                         android:maxLength="10" />
                 </LinearLayout>
 
@@ -465,6 +566,7 @@
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_height="wrap_content"
                         android:text="Alternative hosts"></TextView>
 
@@ -472,6 +574,12 @@
                         android:id="@+id/edidAlternativeHost"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
+                        android:background="@color/lightmaincolor"
+                        android:textSize="17sp"
+                        android:paddingLeft="5dp"
+                        android:minHeight="35dp"
+                        android:textColorHint="@color/light_text"
                         android:gravity="left|center_vertical"
                         android:hint="Input user email list" />
 
@@ -490,12 +598,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/light_text"
                         android:gravity="left|center_vertical"
                         android:text="Enable waiting room" />
 
                     <CheckBox
                         android:id="@+id/chkWaitingRoom"
                         android:layout_width="wrap_content"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
+                        android:buttonTint="@color/light_text"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -512,12 +624,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/light_text"
                         android:gravity="left|center_vertical"
                         android:text="Language Interpretation" />
 
                     <CheckBox
                         android:id="@+id/chkLanguageInterpretation"
                         android:layout_width="wrap_content"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
+                        android:buttonTint="@color/light_text"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -535,11 +651,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
+                        android:textColor="@color/light_text"
                         android:text="List in the Public Event List" />
 
                     <CheckBox
                         android:id="@+id/chkPublicMeeting"
                         android:layout_width="wrap_content"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
+                        android:buttonTint="@color/light_text"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -556,12 +676,16 @@
                         android:id="@+id/txtScheduleFor"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/light_text"
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="Schedule For" />
 
                     <CheckBox
                         android:id="@+id/chkScheduleFor"
+                        android:buttonTint="@color/light_text"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -594,11 +718,15 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="left|center_vertical"
+                            android:textColor="@color/light_text"
                             android:text="Record the meeting automatically " />
 
                         <CheckBox
                             android:id="@+id/chkAutoRecord"
+                            android:buttonTint="@color/light_text"
                             android:layout_width="wrap_content"
+                            android:scaleY="0.8"
+                            android:scaleX="0.8"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
 
@@ -623,11 +751,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="left|center_vertical"
+                                android:textColor="@color/light_text"
                                 android:text="Local" />
 
                             <CheckBox
                                 android:id="@+id/chkLocalRecord"
                                 android:layout_width="wrap_content"
+                                android:buttonTint="@color/light_text"
+                                android:scaleY="0.8"
+                                android:scaleX="0.8"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
 
@@ -643,11 +775,15 @@
                                 android:id="@+id/txtCloudRecord"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/light_text"
                                 android:gravity="left|center_vertical"
                                 android:text="In the cloud" />
 
                             <CheckBox
                                 android:id="@+id/chkCloudRecord"
+                                android:buttonTint="@color/light_text"
+                                android:scaleY="0.8"
+                                android:scaleX="0.8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,14 +35,15 @@ public class PreMeetingExampleActivity extends Activity implements OnClickListen
 	
 	private ListView mListView;
 	private Button mBtnSchedule;
-	
+	private ImageButton mBtnBack;
 	private MeetingsListAdapter mAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pre_meeting_activity);
-		
+		mBtnBack = (ImageButton)findViewById(R.id.btnBack);
+		mBtnBack.setOnClickListener(this);
 		mListView = (ListView)findViewById(R.id.meetingsListView);
 		mBtnSchedule = (Button)findViewById(R.id.btnSchedule);
 		mBtnSchedule.setOnClickListener(this);
@@ -181,7 +183,7 @@ public class PreMeetingExampleActivity extends Activity implements OnClickListen
 				holder.txtTime = (TextView)convertView.findViewById(R.id.txtTime);
 				holder.txtHostName = (TextView)convertView.findViewById(R.id.txtHostName);
 				holder.txtMeetingNo = (TextView)convertView.findViewById(R.id.txtMeetingNo);
-				holder.btnDelete = (Button)convertView.findViewById(R.id.btnDelete);
+				holder.btnDelete = (ImageButton) convertView.findViewById(R.id.btnDelete);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder)convertView.getTag();
@@ -220,7 +222,7 @@ public class PreMeetingExampleActivity extends Activity implements OnClickListen
 			public TextView txtHostName;
 			public TextView txtTime;
 			public TextView txtMeetingNo;
-			public Button btnDelete;
+			public ImageButton btnDelete;
 		}
 	}
 
@@ -229,6 +231,9 @@ public class PreMeetingExampleActivity extends Activity implements OnClickListen
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.btnSchedule) {
 			onClickSchedule();
+		}
+		if(arg0.getId() == R.id.btnBack){
+			onBackPressed();
 		}
 	}
 
