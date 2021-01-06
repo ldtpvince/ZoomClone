@@ -2,6 +2,7 @@ package us.zoom.sdksample.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class EmailUserLoginActivity extends Activity implements UserLoginCallbac
 	private EditText mEdtUserName;
 	private EditText mEdtPassord;
 	private Button mBtnLogin;
+	private Button mBtnCreateAcc;
 	private View mProgressPanel;
 	
 	@Override
@@ -34,6 +36,9 @@ public class EmailUserLoginActivity extends Activity implements UserLoginCallbac
 
 		mBtnLogin = (Button)findViewById(R.id.btnLogin);
 		mBtnLogin.setOnClickListener(this);
+
+		mBtnCreateAcc = (Button)findViewById(R.id.btnCreateAccount);
+		mBtnCreateAcc.setOnClickListener(this);
 
 		mProgressPanel = (View)findViewById(R.id.progressPanel);
 	}
@@ -57,6 +62,10 @@ public class EmailUserLoginActivity extends Activity implements UserLoginCallbac
 		if(v.getId() == R.id.btnLogin) {
 			onClickBtnLogin();
 		}
+
+		if (v.getId() == R.id.btnCreateAccount) {
+			onClickBtnCreateAcc();
+		}
 	}
 	
 	private void onClickBtnLogin() {
@@ -78,6 +87,12 @@ public class EmailUserLoginActivity extends Activity implements UserLoginCallbac
 			mBtnLogin.setVisibility(View.GONE);
 			mProgressPanel.setVisibility(View.VISIBLE);
 		}
+	}
+
+	private void onClickBtnCreateAcc() {
+		String url = "https://zoom.us/freesignup/";
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+		startActivity(intent);
 	}
 
 	@Override
