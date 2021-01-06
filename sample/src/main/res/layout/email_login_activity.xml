@@ -66,8 +66,7 @@
 			android:background="#00000000"
 			android:textColorHint="@color/light_text"
 			android:drawableStart="@drawable/ic_person"
-			android:drawablePadding="20dp"
-			android:background="#00000000">
+			android:drawablePadding="20dp">
 		</EditText>
 
 		<EditText
@@ -84,9 +83,7 @@
 			android:drawablePadding="20dp"
 			android:focusable="true"
 			android:textSize="18sp"
-			android:textColor="@color/light_text"
-			android:textColorHint="@color/light_text"
-			android:background="#00000000">
+			android:textColor="@color/light_text">
 		</EditText>
 
 		<Button
@@ -147,29 +144,4 @@
 			android:background="@drawable/dark_button_bg"/>
 
 		</LinearLayout>
-		
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text = "Forgot password?"
-			android:gravity="center"
-			android:layout_marginTop="30dp"
-			android:fontFamily="sans-serif"
-			android:textColor="@color/light_text"
-			android:textSize="14sp"/>
-
-		<Button
-			android:id="@+id/btnCreateAccount"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp"
-			android:minHeight="40dp"
-			android:text="Create an account"
-			android:layout_marginLeft="20dp"
-			android:layout_marginRight="20dp"
-			android:textColor="#3DD598"
-			android:background="@drawable/dark_button_bg"/>
-
-
 	</LinearLayout>
