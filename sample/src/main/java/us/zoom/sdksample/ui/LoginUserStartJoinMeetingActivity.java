@@ -35,6 +35,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -49,7 +50,7 @@ public class LoginUserStartJoinMeetingActivity extends Activity implements AuthC
     private Button mBtnStartInstantMeeting;
     private Button mBtnPreMeeting;
     private Button mBtnLoginOut;
-    private Button mBtnSettings;
+    private ImageView mBtnSettings;
     private Button mReturnMeeting;
     private Button mBtnDirectShare;
     private final static String DISPLAY_NAME = "ZoomUS SDK";

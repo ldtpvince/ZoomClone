@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="maincolor1">#22343C</color>
+    <color name="maincolor2">#1F2E35</color>
+    <color name="lightgreen">#30886B</color>
+    <color name="lightmaincolor">#30444E</color>
+    <color name="yellow">#FFC542</color>
+    <color name="light_text">#96A7AF</color>
+    <color name="light_button_color1">#40DF9F</color>
+    <color name="light_button_color2">#3ED598</color>
+    <color name="dark_button_color">#286053</color>
+    <color name="white">#FFFFFF</color>
+</resources>
