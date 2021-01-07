@@ -98,8 +98,9 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
     private ImageView mAudioStatusImg;
     private ImageView mVideoStatusImg;
     private ImageView mShareStatusImg;
-    private TextView mMeetingNumberText;
-    private TextView mMeetingPasswordText;
+    //private TextView mMeetingNumberText;
+    //private TextView mMeetingPasswordText;
+    private ImageView mMeetingInfo;
 
     private TextView mMeetingAudioText;
     private TextView mMeetingVideoText;
@@ -147,6 +148,8 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
         void onHidden(boolean hidden);
 
         void onClickShareMeeting();
+
+        void onClickMeetingInfo();
     }
 
 
@@ -213,8 +216,10 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
         mBtnSwitchCamera = findViewById(R.id.btnSwitchCamera);
         mBtnSwitchCamera.setOnClickListener(this);
 
-        mMeetingNumberText = findViewById(R.id.meetingNumber);
-        mMeetingPasswordText = findViewById(R.id.txtPassword);
+        //mMeetingNumberText = findViewById(R.id.meetingNumber);
+        //mMeetingPasswordText = findViewById(R.id.txtPassword);
+        mMeetingInfo = findViewById(R.id.btnMeetingInfo);
+        mMeetingInfo.setOnClickListener(this);
 
 
         findViewById(R.id.btnBack).setOnClickListener(this);
@@ -262,6 +267,7 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
         return mBtnSwitchCamera;
     }
 
+    /*
     public void updateMeetingNumber(String text) {
         if (null != mMeetingNumberText) {
             mMeetingNumberText.setText(text);
@@ -278,6 +284,8 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
             }
         }
     }
+     */
+
 
     public void refreshToolbar() {
         updateAudioButton();
@@ -388,10 +396,19 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
                 }
                 break;
             }
+            case R.id.btnMeetingInfo:{
+                Log.d(TAG, "Clicked on meetinginfo");
+                if(null != mCallBack){
+                    mCallBack.onClickMeetingInfo();
+                    break;
+                }
+            }
             default: {
                 setVisibility(INVISIBLE);
                 break;
             }
+
+
         }
 
     }

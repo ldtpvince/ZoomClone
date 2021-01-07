@@ -4,11 +4,16 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -17,6 +22,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.JsonReader;
 import android.util.Log;
+import android.view.Display;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,6 +33,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -40,6 +47,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -51,10 +59,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -387,8 +398,6 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
     private void refreshToolbar() {
         if (mMeetingService.getMeetingStatus() == MeetingStatus.MEETING_STATUS_INMEETING) {
             mConnectingText.setVisibility(View.GONE);
-            meetingOptionBar.updateMeetingNumber(mInMeetingService.getCurrentMeetingNumber() + "");
-            meetingOptionBar.updateMeetingPassword( mInMeetingService.getMeetingPassword());
             meetingOptionBar.refreshToolbar();
         } else {
             if (mMeetingService.getMeetingStatus() == MeetingStatus.MEETING_STATUS_CONNECTING) {
@@ -800,10 +809,19 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
 
         @Override
         public void onClickShareMeeting() {
+            Log.d("ZoomSDK", mInMeetingService.getCurrentMeetingUrl());
+           Log.d(TAG, mInMeetingService.getCurrentMeetingUrl());
 
+        }
+
+        @Override
+        public void onClickMeetingInfo() {
+
+            showMeetingInfoDialog();
 
         }
     };
+
 
 
     private void onClickMiniWindow()
@@ -950,6 +968,63 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         }
         finished = true;
         super.finish();
+    }
+
+    private void showMeetingInfoDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_meeting_info, null);
+
+        TextView meetingID = view.findViewById(R.id.value_meeting_id);
+        TextView passcode = view.findViewById(R.id.value_passcode);
+        TextView invite_link = view.findViewById(R.id.value_invite);
+
+        ImageView invite_qr = view.findViewById(R.id.value_qr);
+        TextView participant = view.findViewById(R.id.value_participant);
+
+        meetingID.setText(Long.toString(mInMeetingService.getCurrentMeetingNumber()));
+        passcode.setText(mInMeetingService.getMeetingPassword());
+        invite_link.setText(mInMeetingService.getCurrentMeetingUrl());
+
+        invite_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String text;
+
+                ClipData myClip = ClipData.newPlainText("Invitation link", mInMeetingService.getCurrentMeetingUrl());
+                myClipboard.setPrimaryClip(myClip);
+
+                Toast.makeText(getApplicationContext(), "Invitation link copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        Display display = manager.getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        int width = point.x;
+        int height = point.y;
+        int smallerDimension = width < height ? width : height;
+        smallerDimension = smallerDimension * 3 / 4;
+        QRGEncoder qrgEncoder = new QRGEncoder(mInMeetingService.getCurrentMeetingUrl(), null, QRGContents.Type.TEXT, smallerDimension);
+        qrgEncoder.setColorBlack(Color.BLACK);
+        qrgEncoder.setColorWhite(Color.WHITE);
+        try {
+            // Getting QR-Code as Bitmap
+            Bitmap bitmap = qrgEncoder.getBitmap();
+            // Setting Bitmap to ImageView
+            invite_qr.setImageBitmap(bitmap);
+        } catch (Exception e) {
+            Log.v(TAG, e.toString());
+        }
+        participant.setText(Long.toString(mInMeetingService.getParticipantId()));
+
+        builder.setView(view);
+        builder.setTitle(mInMeetingService.getCurrentMeetingTopic());
+        builder.setPositiveButton("OK", null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void showLeaveMeetingDialog() {
@@ -1316,7 +1391,7 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
             if (boController.isInBOMeeting()) {
                 mBtnJoinBo.setVisibility(View.GONE);
                 mBtnRequestHelp.setVisibility(iboAttendee.isHostInThisBO() ? View.GONE : View.VISIBLE);
-                meetingOptionBar.updateMeetingNumber(iboAttendee.getBoName());
+                //meetingOptionBar.updateMeetingNumber(iboAttendee.getBoName());
             } else {
                 mBtnRequestHelp.setVisibility(View.GONE);
                 AlertDialog.Builder builder = new AlertDialog.Builder(MyMeetingActivity.this)
@@ -1369,7 +1444,7 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
             if (iboData != null) {
                 String boName = iboData.getCurrentBoName();
                 if (!TextUtils.isEmpty(boName)) {
-                    meetingOptionBar.updateMeetingNumber(boName);
+                    //meetingOptionBar.updateMeetingNumber(boName);
                 }
             }
         }
@@ -1544,16 +1619,21 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         protected JSONObject doInBackground(String... strings) {
             JSONObject jsonObject = null;
             OkHttpClient client = new OkHttpClient();
+            Log.d("ZoomSDK", "RoomID: " + strings[0]);
             Request request = new Request.Builder()
                     .url("https://api.zoom.us/v2/meetings/" + strings[0])
                     .get()
-                    .addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ii1DZElpek54VFNDdmllNE94QUQ4ZGciLCJleHAiOjE2MTAwMTM5NzEsImlhdCI6MTYxMDAwODU3M30.XiA2b_MZWbL5YfxOHGqFX_ld4N_d5118YenL6kULRzQ")
+                    .addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9" +
+                            ".eyJhdWQiOm51bGwsImlzcyI6ImxyOHRaQ2ktUWRHTndzNWVxMFI1ckEiLCJleHAiOjE2MTA2MTk" +
+                            "1ODYsImlhdCI6MTYxMDAxNDc4N30.Y3dhTR_7abHjZt-bZuOGRT-xzEQa3NmYU7noEO7XA4k")
                     .build();
 
             try {
                 Response response = client.newCall(request).execute();
-                jsonObject = new JSONObject(response.toString());
-            } catch (Exception e) {};
+                jsonObject = new JSONObject(response.body().string());
+            } catch (Exception e) {
+                Log.d("ZoomSDK", e.toString());
+            };
             return jsonObject;
         }
     }

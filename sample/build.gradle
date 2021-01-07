@@ -52,6 +52,8 @@ dependencies {
     implementation project(':commonlib')
     implementation project(':mobilertc')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.volley:volley:1.1.1'
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
+    implementation 'com.google.zxing:core:3.3.2'
+
 }

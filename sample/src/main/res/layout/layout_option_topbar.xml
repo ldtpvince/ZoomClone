@@ -17,8 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_filter_center_focus_24"
-            android:scaleY="1.1"
-            android:scaleX="1.1"/>
+            android:scaleX="1.2"
+            android:scaleY="1.2"/>
     </LinearLayout>
 
     <LinearLayout
@@ -50,8 +50,11 @@
         android:ellipsize="middle"
         android:singleLine="true"
         android:layout_marginRight="6dp"
+        android:padding="5dp"
         android:background="@color/lightgreen"
         android:textColor="@color/white"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="Leave" />
 
 
@@ -63,20 +66,13 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/meetingNumber"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/zm_white"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/txtPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/zm_white"
-            android:textSize="15sp"
-            android:visibility="gone" />
+            android:src="@drawable/ic_baseline_info_24"
+            android:id="@+id/btnMeetingInfo"
+            android:scaleX="1.2"
+            android:scaleY="1.2"/>
     </LinearLayout>
 
 

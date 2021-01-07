@@ -8,4 +8,8 @@
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="android:textColor">#FFFFFF</item>
     </style>
+
+    <style name="AlertDialogDark">
+        <item name="background">@color/lightmaincolor</item>
+    </style>
 </resources>
