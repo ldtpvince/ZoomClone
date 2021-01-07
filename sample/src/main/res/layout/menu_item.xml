@@ -8,12 +8,14 @@
     android:paddingLeft="15dp"
     android:paddingTop="10dp"
     android:paddingRight="15dp"
+    android:background="@color/maincolor1"
     android:paddingBottom="10dp" >
     <TextView
         android:id="@+id/txtLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ZMTextView.PopItem"
+        android:textColor="@color/light_text"
         android:singleLine="true"
         android:text="Item" />
 
