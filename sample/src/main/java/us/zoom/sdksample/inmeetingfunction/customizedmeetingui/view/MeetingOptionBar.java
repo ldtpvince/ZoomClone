@@ -80,6 +80,7 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
 
     private final int MENU_INTERPRETATION_ADMIN = 21;
 
+    private final int MENU_SHARE_MEETING = 22;
 
     MeetingOptionBarCallBack mCallBack;
 
@@ -433,6 +434,7 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
     VirtualVideoSource virtualVideoSource;
     private void showMoreMenuPopupWindow() {
         final SimpleMenuAdapter menuAdapter = new SimpleMenuAdapter(mContext);
+        Log.d("DBG", "Meeting Option bar");
         if (mInMeetingAudioController.isAudioConnected()) {
             menuAdapter.addItem(new SimpleMenuItem(MENU_DISCONNECT_AUDIO, "Disconnect Audio"));
         }
@@ -473,6 +475,7 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
         if (BuildConfig.DEBUG) {
 //            menuAdapter.addItem((new SimpleMenuItem(MENU_SWITCH_DOMAIN, "Switch Domain")));
         }
+        menuAdapter.addItem(new SimpleMenuItem(MENU_SHARE_MEETING, "Share meeting"));
 
         if (BuildConfig.DEBUG) {
             InMeetingUserInfo myUserInfo = mInMeetingService.getMyUserInfo();

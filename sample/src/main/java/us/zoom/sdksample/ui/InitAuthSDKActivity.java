@@ -144,7 +144,7 @@ public class InitAuthSDKActivity extends Activity implements InitAuthSDKCallback
             ZoomSDK.getInstance().getMeetingSettingsHelper().enableShowMyMeetingElapseTime(true);
             ZoomSDK.getInstance().getMeetingService().addListener(this);
             ZoomSDK.getInstance().getMeetingSettingsHelper().setCustomizedNotificationData(null, handle);
-            Toast.makeText(this, "Initialize Zoom SDK successfully.", Toast.LENGTH_LONG).show();
+
             if (mZoomSDK.tryAutoLoginZoom() == ZoomApiError.ZOOM_API_ERROR_SUCCESS) {
                 UserLoginCallback.getInstance().addListener(this);
                 showProgressPanel(true);

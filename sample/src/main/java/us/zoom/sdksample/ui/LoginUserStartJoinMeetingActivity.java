@@ -335,6 +335,7 @@ public class LoginUserStartJoinMeetingActivity extends Activity implements AuthC
             if (ZoomMeetingUISettingHelper.useExternalVideoSource) {
                 ZoomMeetingUISettingHelper.changeVideoSource(true);
             }
+            Log.d(TAG, "Jump to showMeetingUi");
             showMeetingUi();
         }
         refreshUI();
@@ -364,11 +365,14 @@ public class LoginUserStartJoinMeetingActivity extends Activity implements AuthC
     }
 
     private void showMeetingUi() {
+        ZoomSDK.getInstance().getMeetingSettingsHelper().setCustomizedMeetingUIEnabled(true);
         if (ZoomSDK.getInstance().getMeetingSettingsHelper().isCustomizedMeetingUIEnabled()) {
             SharedPreferences sharedPreferences = getSharedPreferences("UI_Setting", Context.MODE_PRIVATE);
             boolean enable = sharedPreferences.getBoolean("enable_rawdata", false);
             Intent intent = null;
+            Log.d(TAG, "Enable: " + Boolean.toString(enable));
             if (!enable) {
+                Log.d(TAG, "start mymeetingactivity");
                 intent = new Intent(this, MyMeetingActivity.class);
             } else {
                 intent = new Intent(this, RawDataMeetingActivity.class);
