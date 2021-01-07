@@ -39,12 +39,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,9 +50,14 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import us.zoom.sdk.IBOAdmin;
 import us.zoom.sdk.IBOAssistant;
 import us.zoom.sdk.IBOAttendee;
@@ -263,6 +262,11 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         mBtnJoinBo.setOnClickListener(this);
         mBtnRequestHelp.setOnClickListener(this);
         refreshToolbar();
+
+        try {
+            mMeetingInfo = new DownloadMeetingInfo().execute(new String(mInMeetingService.getCurrentMeetingNumber() + "")).get();
+        } catch (Exception e) {};
+
     }
 
     @Override
@@ -797,9 +801,7 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         @Override
         public void onClickShareMeeting() {
 
-            try {
-                new DownloadMeetingInfo(getBaseContext()).execute(new String(mInMeetingService.getCurrentMeetingNumber() + "")).get();
-            } catch (Exception e) {}
+
         }
     };
 
@@ -1537,38 +1539,22 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
     };
 
     private class DownloadMeetingInfo extends AsyncTask<String, Integer, JSONObject>{
-        private Context context;
-
-        public DownloadMeetingInfo(Context context) {
-            this.context = context;
-        }
 
         @Override
         protected JSONObject doInBackground(String... strings) {
-            final JSONObject[] jsonObject = {null};
-            RequestQueue queue = Volley.newRequestQueue(context);
-            String url = "https://api.zoom.us/v2/meetings/" + strings[0];
-            Log.d("ZoomSDK", "url: " + url);
-            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    try {
-                        jsonObject[0] = new JSONObject(response);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Log.d("ZoomSDK", response);
-                    Log.d("ZomSDK", jsonObject[0].toString());
+            JSONObject jsonObject = null;
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url("https://api.zoom.us/v2/meetings/" + strings[0])
+                    .get()
+                    .addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6Ii1DZElpek54VFNDdmllNE94QUQ4ZGciLCJleHAiOjE2MTAwMTM5NzEsImlhdCI6MTYxMDAwODU3M30.XiA2b_MZWbL5YfxOHGqFX_ld4N_d5118YenL6kULRzQ")
+                    .build();
 
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d("ZoomSDK", "Error in request" + error.toString());
-                }
-            });
-            queue.add(request);
-            return jsonObject[0];
+            try {
+                Response response = client.newCall(request).execute();
+                jsonObject = new JSONObject(response.toString());
+            } catch (Exception e) {};
+            return jsonObject;
         }
     }
 }
