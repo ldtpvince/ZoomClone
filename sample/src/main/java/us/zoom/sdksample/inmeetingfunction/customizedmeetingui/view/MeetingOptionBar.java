@@ -145,6 +145,8 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
         void showMoreMenu(PopupWindow popupWindow);
 
         void onHidden(boolean hidden);
+
+        void onClickShareMeeting();
     }
 
 
@@ -630,6 +632,10 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
                     }
                     case MENU_INTERPRETATION_ADMIN:{
                         MeetingInterpretationAdminDialog.show(mContext);
+                        break;
+                    }
+                    case MENU_SHARE_MEETING:{
+                        mCallBack.onClickShareMeeting();
                         break;
                     }
                 }

@@ -4,15 +4,18 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.JsonReader;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -36,7 +39,25 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import us.zoom.sdk.IBOAdmin;
 import us.zoom.sdk.IBOAssistant;
@@ -170,6 +191,9 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
 
     private GestureDetector gestureDetector;
 
+    private JSONObject mMeetingInfo;
+    //Added: Json meeting info
+
     public static final int JOIN_FROM_UNLOGIN=1;
 
     public static  final int JOIN_FROM_APIUSER=2;
@@ -238,7 +262,6 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
 
         mBtnJoinBo.setOnClickListener(this);
         mBtnRequestHelp.setOnClickListener(this);
-
         refreshToolbar();
     }
 
@@ -769,6 +792,14 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         @Override
         public void onHidden(boolean hidden) {
             updateVideoListMargin(hidden);
+        }
+
+        @Override
+        public void onClickShareMeeting() {
+
+            try {
+                new DownloadMeetingInfo(getBaseContext()).execute(new String(mInMeetingService.getCurrentMeetingNumber() + "")).get();
+            } catch (Exception e) {}
         }
     };
 
@@ -1505,5 +1536,40 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         }
     };
 
+    private class DownloadMeetingInfo extends AsyncTask<String, Integer, JSONObject>{
+        private Context context;
+
+        public DownloadMeetingInfo(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... strings) {
+            final JSONObject[] jsonObject = {null};
+            RequestQueue queue = Volley.newRequestQueue(context);
+            String url = "https://api.zoom.us/v2/meetings/" + strings[0];
+            Log.d("ZoomSDK", "url: " + url);
+            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        jsonObject[0] = new JSONObject(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d("ZoomSDK", response);
+                    Log.d("ZomSDK", jsonObject[0].toString());
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("ZoomSDK", "Error in request" + error.toString());
+                }
+            });
+            queue.add(request);
+            return jsonObject[0];
+        }
+    }
 }
 
