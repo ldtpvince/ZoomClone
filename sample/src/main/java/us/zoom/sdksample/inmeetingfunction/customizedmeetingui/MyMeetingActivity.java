@@ -808,13 +808,6 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         }
 
         @Override
-        public void onClickShareMeeting() {
-            Log.d("ZoomSDK", mInMeetingService.getCurrentMeetingUrl());
-           Log.d(TAG, mInMeetingService.getCurrentMeetingUrl());
-
-        }
-
-        @Override
         public void onClickMeetingInfo() {
 
             showMeetingInfoDialog();
