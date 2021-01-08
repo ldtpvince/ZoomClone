@@ -47,6 +47,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -964,7 +966,7 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
     }
 
     private void showMeetingInfoDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.AlertDialogTheme);
         View view = getLayoutInflater().inflate(R.layout.dialog_meeting_info, null);
 
         TextView meetingID = view.findViewById(R.id.value_meeting_id);
@@ -1016,12 +1018,11 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         builder.setTitle(mInMeetingService.getCurrentMeetingTopic());
         builder.setPositiveButton("OK", null);
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        builder.create().show();
     }
 
     private void showLeaveMeetingDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.AlertDialogTheme);
         if (mInMeetingService.isMeetingConnected()) {
             if (mInMeetingService.isMeetingHost()) {
                 builder.setTitle("End or leave meeting")
@@ -1092,7 +1093,7 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
     }
 
     private void showJoinFailDialog(int error) {
-        AlertDialog dialog = new AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.AlertDialogTheme)
                 .setCancelable(false)
                 .setTitle("Meeting Fail")
                 .setMessage("Error:" + error)
@@ -1102,12 +1103,12 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
                     }
-                }).create();
-        dialog.show();
+                });
+        builder.create().show();
     }
 
     private void showWebinarNeedRegisterDialog(final InMeetingEventHandler inMeetingEventHandler) {
-        AlertDialog dialog = new AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.AlertDialogTheme)
                 .setCancelable(false)
                 .setTitle("Need register to join this webinar meeting ")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -1126,12 +1127,12 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
                             inMeetingEventHandler.setRegisterWebinarInfo("test", time+"@example.com", false);
                         }
                     }
-                }).create();
-        dialog.show();
+                });
+        builder.create().show();
     }
 
     private void showEndOtherMeetingDialog(final InMeetingEventHandler handler) {
-        AlertDialog dialog = new AlertDialog.Builder(this)
+       MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.AlertDialogTheme)
                 .setCancelable(false)
                 .setTitle("Meeting Alert")
                 .setMessage("You have a meeting that is currently in-progress. Please end it to start a new meeting.")
@@ -1147,8 +1148,8 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
                         finish();
                         mInMeetingService.leaveCurrentMeeting(true);
                     }
-                }).create();
-        dialog.show();
+                });
+       builder.create().show();
     }
 
     @SuppressLint("NewApi")
@@ -1204,6 +1205,8 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         meetingAudioHelper.onUserAudioStatusChanged(userId);
     }
 
+
+
     @Override
     public void onUserAudioTypeChanged(long userId) {
         meetingAudioHelper.onUserAudioTypeChanged(userId);
@@ -1243,12 +1246,15 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
     public void onMeetingUserJoin(List<Long> userList) {
         checkShowVideoLayout();
         updateVideoView(userList, 1);
+        Toast.makeText(getBaseContext(), "A user has joined.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onMeetingUserLeave(List<Long> userList) {
         checkShowVideoLayout();
         updateVideoView(userList, 2);
+        if(userList.size() > 1)
+        Toast.makeText(getBaseContext(), "A user has left.", Toast.LENGTH_SHORT).show();
     }
 
     @Override

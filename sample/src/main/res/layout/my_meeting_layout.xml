@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root_view"
     android:layout_width="fill_parent"
+    android:background="@color/maincolor1"
     android:layout_height="fill_parent">
 
     <RelativeLayout
@@ -106,6 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/light_text"
         android:text="Please wait, the meeting host will let you in soon."
         android:visibility="gone" />
 

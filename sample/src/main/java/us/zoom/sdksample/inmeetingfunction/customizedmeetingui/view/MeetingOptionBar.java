@@ -118,6 +118,7 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
 
     private Context mContext;
 
+
     public interface MeetingOptionBarCallBack {
         void onClickBack();
 
@@ -319,10 +320,10 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
             mBtnShare.setVisibility(View.VISIBLE);
             if (mInMeetingShareController.isSharingOut()) {
                 mMeetingShareText.setText("Stop share");
-                mShareStatusImg.setImageResource(R.drawable.icon_share_pause);
+                mShareStatusImg.setImageResource(R.drawable.ic_baseline_stop_screen_share_24)   ;
             } else {
                 mMeetingShareText.setText("Share");
-                mShareStatusImg.setImageResource(R.drawable.icon_share_resume);
+                mShareStatusImg.setImageResource(R.drawable.ic_baseline_screen_share_24);
             }
         }
     }
@@ -492,7 +493,6 @@ public class MeetingOptionBar extends FrameLayout implements View.OnClickListene
         if (BuildConfig.DEBUG) {
 //            menuAdapter.addItem((new SimpleMenuItem(MENU_SWITCH_DOMAIN, "Switch Domain")));
         }
-        menuAdapter.addItem(new SimpleMenuItem(MENU_SHARE_MEETING, "Share meeting"));
 
         if (BuildConfig.DEBUG) {
             InMeetingUserInfo myUserInfo = mInMeetingService.getMyUserInfo();

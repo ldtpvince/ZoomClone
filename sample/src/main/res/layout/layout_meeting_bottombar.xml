@@ -24,10 +24,12 @@
 
         <TextView
             android:id="@+id/text_audio"
-            style="@style/ZMTextView.ToolbarBtnLabel"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/shareStatusImage"
+            android:textSize="12sp"
             android:layout_centerHorizontal="true"
             android:duplicateParentState="true"
             android:gravity="center_horizontal"
@@ -53,12 +55,14 @@
 
         <TextView
             android:id="@+id/text_video"
-            style="@style/ZMTextView.ToolbarBtnLabel"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/shareStatusImage"
             android:layout_centerHorizontal="true"
             android:duplicateParentState="true"
+            android:textSize="12sp"
             android:gravity="center_horizontal"
             android:singleLine="true"
             android:text="Video" />
@@ -78,16 +82,20 @@
             android:layout_height="wrap_content"
             android:duplicateParentState="true"
             android:focusable="false"
-            android:src="@drawable/icon_share_resume" />
+            android:scaleY="1.2"
+            android:scaleX="1.2"
+            android:src="@drawable/ic_baseline_screen_share_24" />
 
         <TextView
             android:id="@+id/text_share"
-            style="@style/ZMTextView.ToolbarBtnLabel"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/shareStatusImage"
             android:layout_centerHorizontal="true"
             android:duplicateParentState="true"
+            android:textSize="12sp"
             android:gravity="center_horizontal"
             android:singleLine="true"
             android:text="Share" />
@@ -108,12 +116,15 @@
             android:layout_height="wrap_content"
             android:duplicateParentState="true"
             android:focusable="false"
+
             android:src="@drawable/zm_btn_plist" />
 
         <TextView
             android:id="@+id/text_plist"
 
-            style="@style/ZMTextView.ToolbarBtnLabel"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/shareStatusImage"
@@ -142,8 +153,10 @@
 
         <TextView
             android:id="@+id/text_more"
-            style="@style/ZMTextView.ToolbarBtnLabel"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
+            android:textSize="12sp"
             android:layout_height="wrap_content"
             android:layout_below="@id/shareStatusImage"
             android:layout_centerHorizontal="true"
