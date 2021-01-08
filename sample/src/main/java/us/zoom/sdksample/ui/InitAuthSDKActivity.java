@@ -217,6 +217,7 @@ public class InitAuthSDKActivity extends Activity implements InitAuthSDKCallback
             return;
         }
 
+        ZoomSDK.getInstance().getMeetingSettingsHelper().setCustomizedMeetingUIEnabled(false);
         if (ZoomSDK.getInstance().getMeetingSettingsHelper().isCustomizedMeetingUIEnabled()) {
             ZoomSDK.getInstance().getSmsService().enableZoomAuthRealNameMeetingUIShown(false);
         } else {

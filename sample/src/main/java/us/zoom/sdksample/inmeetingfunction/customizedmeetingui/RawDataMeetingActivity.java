@@ -417,8 +417,8 @@ public class RawDataMeetingActivity extends FragmentActivity implements InMeetin
 
         final EditText pwd = builder.findViewById(R.id.edit_pwd);
         final EditText name = builder.findViewById(R.id.edit_name);
-        builder.findViewById(R.id.layout_pwd).setVisibility(needPassword ? View.VISIBLE : View.GONE);
-        builder.findViewById(R.id.layout_name).setVisibility(needDisplayName ? View.VISIBLE : View.GONE);
+        //builder.findViewById(R.id.layout_pwd).setVisibility(needPassword ? View.VISIBLE : View.GONE);
+        //builder.findViewById(R.id.layout_name).setVisibility(needDisplayName ? View.VISIBLE : View.GONE);
 
         builder.findViewById(R.id.btn_leave).setOnClickListener(new View.OnClickListener() {
             @Override
