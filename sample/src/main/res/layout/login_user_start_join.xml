@@ -82,7 +82,8 @@
                 android:layout_marginTop="7dp"
                 android:textColor="@color/light_text"
                 android:imeOptions="actionNext|flagNoExtractUi"
-                android:focusable="true">
+                android:focusable="true"
+                android:visibility="gone">
 
             </EditText>
 
