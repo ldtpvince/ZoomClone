@@ -27,4 +27,7 @@
     <string name="settings_hide_screen_share_toolbar_annotation">Hide annotation button in screen share</string>
     <string name="settings_hide_screen_share_toolbar_stopshare">Hide stopshare button in screen share</string>
 
+    <string name="title_activity_barcode_scanning">Scan Barcode</string>
+    <string name="scanned_code_result_label">Scan Result:</string>
+
 </resources>

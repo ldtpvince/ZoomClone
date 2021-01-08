@@ -1,23 +1,32 @@
 package us.zoom.sdksample.otherfeatures;
 
 import android.app.Application;
-import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+
+import android.util.Log;
+
+import androidx.camera.lifecycle.ProcessCameraProvider;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.ExecutionException;
 
-public class CameraXViewModel extends AndroidViewModel {
+/**
+ * View model for interacting with CameraX.
+ */
+public final class CameraXViewModel extends AndroidViewModel {
+
     private static final String TAG = "CameraXViewModel";
     private MutableLiveData<ProcessCameraProvider> cameraProviderLiveData;
 
+    /**
+     * Create an instance which interacts with the camera service via the given application context.
+     */
     public CameraXViewModel(@NonNull Application application) {
         super(application);
     }
@@ -26,7 +35,8 @@ public class CameraXViewModel extends AndroidViewModel {
         if (cameraProviderLiveData == null) {
             cameraProviderLiveData = new MutableLiveData<>();
 
-            ListenableFuture<ProcessCameraProvider> cameraProviderFuture = ProcessCameraProvider.getInstance(getApplication());
+            ListenableFuture<ProcessCameraProvider> cameraProviderFuture =
+                    ProcessCameraProvider.getInstance(getApplication());
             cameraProviderFuture.addListener(
                     () -> {
                         try {
@@ -37,7 +47,7 @@ public class CameraXViewModel extends AndroidViewModel {
                         }
                     },
                     ContextCompat.getMainExecutor(getApplication()));
-            }
+        }
 
         return cameraProviderLiveData;
     }
