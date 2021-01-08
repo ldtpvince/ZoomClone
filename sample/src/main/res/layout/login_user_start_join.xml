@@ -140,6 +140,19 @@
             android:paddingRight="40dp"
             android:onClick="onClickBtnLoginUserStartInstant" />
         <Button
+            android:id="@+id/btnScanMeeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Scan QR"
+            android:background="@drawable/dark_button_bg"
+            android:textColor="@color/light_button_color1"
+            android:drawableRight="@drawable/ic_baseline_arrow_right_alt_24"
+            android:minHeight="40dp"
+            android:paddingRight="40dp"
+            android:onClick="onClickBtnScanMeeting" />
+        <Button
             android:id="@+id/btnPreMeeting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
