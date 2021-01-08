@@ -47,6 +47,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.json.JSONArray;
@@ -875,43 +876,45 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
         clearSubscribe();
     }
 
-    Dialog builder;
+    androidx.appcompat.app.AlertDialog dialog;
 
     private void showPsswordDialog(final boolean needPassword, final boolean needDisplayName, final InMeetingEventHandler handler) {
-        if (null != builder) {
-            builder.dismiss();
+        if (null != dialog) {
+            dialog.dismiss();
         }
-        builder = new Dialog(this);
+
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.AlertDialogTheme);
         builder.setTitle("Need password or displayName");
-        builder.setContentView(R.layout.layout_input_password_name);
 
-        final EditText pwd = builder.findViewById(R.id.edit_pwd);
-        final EditText name = builder.findViewById(R.id.edit_name);
-        builder.findViewById(R.id.layout_pwd).setVisibility(needPassword ? View.VISIBLE : View.GONE);
-        builder.findViewById(R.id.layout_name).setVisibility(needDisplayName ? View.VISIBLE : View.GONE);
 
-        builder.findViewById(R.id.btn_leave).setOnClickListener(new View.OnClickListener() {
+        View view = getLayoutInflater().inflate(R.layout.layout_input_password_name, null);
+        final EditText pwd = view.findViewById(R.id.edit_pwd);
+        final EditText name = view.findViewById(R.id.edit_name);
+
+
+        view.findViewById(R.id.btn_leave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                builder.dismiss();
+                dialog.dismiss();
                 mInMeetingService.leaveCurrentMeeting(true);
             }
         });
-        builder.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String password = pwd.getText().toString();
                 String userName = name.getText().toString();
                 if (needPassword && TextUtils.isEmpty(password) || (needDisplayName && TextUtils.isEmpty(userName))) {
-                    builder.dismiss();
+                    dialog.dismiss();
                     onMeetingNeedPasswordOrDisplayName(needPassword, needDisplayName, handler);
                     return;
                 }
-                builder.dismiss();
+                dialog.dismiss();
                 handler.setMeetingNamePassword(password, userName);
             }
         });
-        builder.show();
+        builder.setView(view);
+        builder.create().show();
         pwd.requestFocus();
     }
 
@@ -955,6 +958,8 @@ public class MyMeetingActivity extends FragmentActivity implements View.OnClickL
 
 
     boolean finished = false;
+
+
 
     @Override
     public void finish() {
