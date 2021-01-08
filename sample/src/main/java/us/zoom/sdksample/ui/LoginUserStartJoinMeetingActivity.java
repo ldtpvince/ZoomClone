@@ -19,6 +19,7 @@ import us.zoom.sdksample.inmeetingfunction.customizedmeetingui.RawDataMeetingAct
 import us.zoom.sdksample.inmeetingfunction.customizedmeetingui.SimpleZoomUIDelegate;
 import us.zoom.sdksample.inmeetingfunction.customizedmeetingui.view.MeetingWindowHelper;
 import us.zoom.sdksample.inmeetingfunction.zoommeetingui.ZoomMeetingUISettingHelper;
+import us.zoom.sdksample.otherfeatures.MyScanQRActivity;
 import us.zoom.sdksample.otherfeatures.scheduleforloginuser.PreMeetingExampleActivity;
 import us.zoom.sdksample.startjoinmeeting.LoginUserStartMeetingHelper;
 import us.zoom.sdksample.startjoinmeeting.joinmeetingonly.JoinMeetingHelper;
@@ -53,6 +54,7 @@ public class LoginUserStartJoinMeetingActivity extends Activity implements AuthC
     private ImageView mBtnSettings;
     private Button mReturnMeeting;
     private Button mBtnDirectShare;
+    private Button mBtnScanMeeting;
     private final static String DISPLAY_NAME = "ZoomUS SDK";
 
     private boolean mbPendingStartMeeting = false;
@@ -72,6 +74,7 @@ public class LoginUserStartJoinMeetingActivity extends Activity implements AuthC
         mBtnLoginOut = (Button) findViewById(R.id.btnLogout);
         mBtnSettings = findViewById(R.id.btn_settings);
         mReturnMeeting = findViewById(R.id.btn_return);
+        mBtnScanMeeting = findViewById(R.id.btnScanMeeting);
 
         mBtnDirectShare=findViewById(R.id.btnShare);
 
@@ -247,6 +250,11 @@ public class LoginUserStartJoinMeetingActivity extends Activity implements AuthC
 
     public void onClickReturnMeeting(View view) {
         UIUtil.returnToMeeting(this);
+    }
+
+    public void onClickBtnScanMeeting(View view) {
+        Intent intent = new Intent(this, MyScanQRActivity.class);
+        startActivity(intent);
     }
 
     public void onClickBtnPreMeeting(View view) {
