@@ -1,9 +1,9 @@
 # ZoomClone
 
-Các chức năng đã được cung cấp sẵn:
-  - Tạo meeting
-  - Tham gia meeting (thông qua id, pass được tạo ra từ các phần mềm zoom)
-  - Đăng nhập tài khoản Zoom (được tạo thông qua các phần mềm zoom)</br>
-
-Công việc phải làm:
-  - Chỉnh lại UI
+Ứng dụng tạo meeting dựa trên Zoom SDK, hỗ trợ các chức năng:
+  - Đăng nhập/đăng ký tài khoản Zoom
+  - Tạo meeting trên Zoom database
+  - Tham gia meeting trên Zoom database
+  - Tạo lịch cho các meeting
+  - Chia sẻ thông tin meeting qua link
+  - Chia sẻ thông tin meeting qua mã QR
